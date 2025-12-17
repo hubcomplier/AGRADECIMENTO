@@ -15,13 +15,25 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0d1b2a 100%);
+            background-color: #0a0a0f; /* Cor de fundo de segurança caso o video demore a carregar */
             min-height: 100vh;
             overflow-x: hidden;
             color: #fff;
         }
 
-        /* Animated Background */
+        /* --- NOVO ESTILO PARA O VÍDEO DE FUNDO --- */
+        .video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Garante que o vídeo cubra toda a tela sem distorcer */
+            z-index: -2; /* Fica atrás de tudo */
+            filter: brightness(0.6); /* Escurece levemente o vídeo para o texto ficar legível */
+        }
+
+        /* Animated Background Overlay (Mantido para dar o efeito de cor por cima do vídeo) */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -29,8 +41,9 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 0;
+            z-index: -1; /* Fica na frente do vídeo, mas atrás do conteúdo */
             overflow: hidden;
+            opacity: 0.5; /* Transparência para ver o vídeo atrás */
         }
 
         .bg-animation::before {
@@ -41,9 +54,9 @@
             width: 200%;
             height: 200%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(75, 0, 130, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 20% 80%, rgba(139, 69, 19, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(218, 165, 32, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(75, 0, 130, 0.15) 0%, transparent 50%);
             animation: bgMove 20s ease-in-out infinite;
         }
 
@@ -1014,7 +1027,12 @@
     </style>
 </head>
 <body>
-    <!-- Animated Background -->
+    <!-- BACKGROUND VIDEO -->
+    <video autoplay muted loop playsinline class="video-bg">
+        <source src="https://res.cloudinary.com/dlueoyrhe/video/upload/v1765954233/generated_video_-_2025-12-17T034935.930_dztl80.mp4" type="video/mp4">
+    </video>
+
+    <!-- Animated Background Overlay -->
     <div class="bg-animation"></div>
 
     <!-- Stars -->
@@ -1109,7 +1127,7 @@
                 <div class="product-card">
                     <span class="product-badge">🔥 MAIS VENDIDO</span>
                     <div class="product-image-container">
-                        <img src="https://res.cloudinary.com/dlueoyrhe/image/upload/v1765409185/generated_video_36__051_g105g1.jpg" alt="Manifestando em Silêncio" class="product-image">
+                        <img src="https://res.cloudinary.com/dlueoyrhe/image/upload/v1765808813/WhatsApp_Image_2025-12-15_at_11.14.55_d0d1do.jpg" alt="Manifestando em Silêncio" class="product-image">
                         <div class="product-overlay"></div>
                     </div>
                     <div class="product-content">
@@ -1161,7 +1179,7 @@
                 <div class="product-card">
                     <span class="product-badge">💎 EXCLUSIVO</span>
                     <div class="product-image-container">
-                        <img src="https://res.cloudinary.com/dlueoyrhe/image/upload/v1765413767/generated_video_42__057_lrijhb.jpg" alt="Eu Decreto" class="product-image">
+                        <img src="https://res.cloudinary.com/dlueoyrhe/image/upload/v1765728949/OFICIAL_EU_DECRETO_FEMININA_PRETO_chnkms.jpg" alt="Eu Decreto" class="product-image">
                         <div class="product-overlay"></div>
                     </div>
                     <div class="product-content">
@@ -1469,4 +1487,3 @@
     </script>
 </body>
 </html>
-
